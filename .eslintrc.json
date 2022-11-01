@@ -1,0 +1,48 @@
+{
+	"extends": ["next", "prettier", "plugin:import/recommended"],
+	"plugins": ["unused-imports", "prettier"],
+	"rules": {
+		"prettier/prettier": "error",
+		// Configure the import order
+		"import/order": [
+			"error",
+			{
+				"pathGroups": [
+					// Internal between external and relative
+					{
+						"pattern": "@/**",
+						"group": "internal"
+					},
+					// Next as the second group
+					{
+						"pattern": "next/**",
+						"group": "builtin",
+						"position": "before"
+					},
+					// React in the first group
+					{
+						"pattern": "react",
+						"group": "builtin",
+						"position": "before"
+					}
+				],
+				"pathGroupsExcludedImportTypes": ["builtin"],
+				"newlines-between": "always",
+				"groups": ["builtin", "external", "internal", "parent", "sibling"],
+				"alphabetize": { "order": "asc", "caseInsensitive": true }
+			}
+		],
+		"unused-imports/no-unused-imports": "warn",
+		/* React Rules */
+		"react/prop-types": "warn",
+		"react/self-closing-comp": "warn",
+		"react/function-component-definition": [
+			"error",
+			{
+				"namedComponents": "function-declaration"
+			}
+		],
+		"react/jsx-no-leaked-render": "error",
+		"react/hook-use-state": "error"
+	}
+}

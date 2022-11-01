@@ -1,0 +1,28 @@
+## Slide con código
+
+```tsx {highlight: '1..2'}
+function Component() {
+	const [state, setState] = useState(0);
+	return (
+		<div>
+			<button onClick={() => setState(state + 1)}>Increment</button>
+			<p>Value: {state}</p>
+		</div>
+	);
+}
+```
+
+import { useState } from "react";
+export function Component() {
+	const [state, setState] = useState(0);
+	return (
+		<div>
+			<button onClick={() => setState(state + 1)}>Increment</button>
+			<p>Value: {state}</p>
+		</div>
+	);
+}
+
+<div className="m-4 p-2 border-red-600 border-solid border-2">
+	<Component />
+</div>

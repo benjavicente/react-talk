@@ -1,0 +1,15 @@
+import React from "react";
+import { useSteps } from "@/lib/slides";
+
+## Pasos
+
+export function Steps() {
+	const step = useSteps(4);
+	return (
+		<div>
+			<h1>Step {step}</h1>
+		</div>
+	);
+}
+
+<Steps />

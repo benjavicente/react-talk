@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+	tab-size: 2;
+	overflow: hidden;
+}
+
+.highlighted {
+	@apply bg-opacity-10 bg-yellow-200 w-min;
+}
+
+.slide {
+	@apply text-lg;
+}
+
+.slide code {
+	@apply text-sm flex flex-col;
+}
+
+.slide pre {
+	@apply overflow-x-auto px-4 py-2 rounded text-sm leading-tight;
+}
+
+.slide h1 {
+	@apply text-5xl font-bold underline decoration-primary underline-offset-4 decoration-wavy mb-4;
+}
+
+.slide h2 {
+	@apply text-3xl font-bold mb-4;
+}
+
+.slide ul {
+	@apply list-disc list-inside;
+}
