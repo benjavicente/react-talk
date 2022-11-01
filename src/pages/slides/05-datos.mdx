@@ -1,13 +1,21 @@
 import React from "react";
 import { useSteps } from "@/lib/slides";
 
+export const stepsMsgs = ["Se puede moostrar", "mensajes paso a paso", "con un hook", "dentor de un componente en MDX"];
+
 ## Pasos
 
 export function Steps() {
-	const step = useSteps(4);
+	const step = useSteps(5);
 	return (
 		<div>
 			<h1>Step {step}</h1>
+			Usa la flecha de abajo
+			<ul>
+				{stepsMsgs.slice(0, step).map((msg, i) => (
+					<li key={i}>{msg}</li>
+				))}
+			</ul>
 		</div>
 	);
 }

@@ -3,15 +3,7 @@ import { useContext, useEffect, useState, createContext } from "react";
 import { useRouter } from "next/router";
 
 import axios from "axios";
-
-export type SlideContextPayload = null | {
-	currentSlide: number;
-	slides: string[];
-	prev?: string;
-	next?: string;
-	setSteps: (steps: number) => void;
-	currentStep: number;
-};
+import { useWindowEventListener } from "./events";
 
 const SlidesContext = createContext<SlideContextPayload | undefined>(undefined);
 
@@ -29,65 +21,54 @@ function getSlideIndex(pathname: string, slidesNames: string[]) {
 	return slidesNames.findIndex((slideName) => pathname.includes(slideName));
 }
 
-function getStepDiffByKey(key: KeyboardEvent["key"]) {
-	switch (key) {
-		case "ArrowLeft":
-			return -1;
-		case "ArrowRight":
-			return 1;
-		default:
-			return 0;
-	}
+function makeMoveDiffControls(back: KeyboardEvent["key"][], forward: KeyboardEvent["key"][]) {
+	return function moveControl(key: KeyboardEvent["key"]) {
+		if (back.includes(key)) return -1;
+		if (forward.includes(key)) return 1;
+		return 0;
+	};
 }
+
+export type SlideContextPayload = null | {
+	currentSlide: number;
+	slides: string[];
+	prev?: string;
+	next?: string;
+};
+
+const presentationMoveDiff = makeMoveDiffControls(["ArrowLeft"], ["ArrowRight"]);
 
 function useSlideControls(slides: string[]) {
 	const router = useRouter();
-	const [steps, setSteps] = useState(1);
-	const [currentStep, setCurrentStep] = useState(0);
 
 	const currentSlide = getSlideIndex(router.pathname, slides);
 	const prev = currentSlide > 0 ? slides[currentSlide - 1] : undefined;
 	const next = currentSlide < slides.length - 1 ? slides[currentSlide + 1] : undefined;
 
-	useEffect(() => {
-		setSteps(1);
-	}, [router.pathname]);
+	const goToNext = () => {
+		if (!next) return;
+		router.push(`/slides/${next}`);
+	};
 
-	useEffect(() => {
-		if (currentStep === -1) setCurrentStep(steps - 1);
-	}, [steps, currentStep]);
+	const goToPrev = () => {
+		if (!prev) return;
+		router.push(`/slides/${prev}`);
+	};
 
-	useEffect(() => {
-		if (!slides) return;
-		const step = currentStep == -1 ? 0 : currentStep;
-		const handleKeyDown = (e: KeyboardEvent) => {
-			const newCurrentStep = getStepDiffByKey(e.key) + step;
-			if (newCurrentStep < 0) {
-				if (prev) {
-					router.push(`/slides/${prev}`);
-					setCurrentStep(-1);
-				}
-			} else if (newCurrentStep >= steps) {
-				if (next) {
-					router.push(`/slides/${next}`);
-					setCurrentStep(0);
-				}
-			} else {
-				setCurrentStep(newCurrentStep);
-			}
-		};
-		window.addEventListener("keydown", handleKeyDown);
-		return () => window.removeEventListener("keydown", handleKeyDown);
-	}, [prev, next, slides, currentStep, steps, router]);
+	useWindowEventListener("keydown", (e) => {
+		const diff = presentationMoveDiff(e.key);
+		if (diff > 0) goToNext();
+		else if (diff < 0) goToPrev();
+	});
 
-	return { currentStep, steps, setSteps, currentSlide, prev, next };
+	return { currentSlide, prev, next };
 }
 
 export function SlidesProvider(props: PropsWithChildren) {
 	const slides = useSlidesNames();
-	const { setSteps, next, prev, currentSlide, currentStep } = useSlideControls(slides);
+	const controls = useSlideControls(slides);
 	if (!slides) return <SlidesContext.Provider value={null} {...props} />;
-	return <SlidesContext.Provider value={{ prev, currentStep, next, setSteps, slides, currentSlide }} {...props} />;
+	return <SlidesContext.Provider value={{ slides, ...controls }} {...props} />;
 }
 
 export function useSlides() {
@@ -96,10 +77,15 @@ export function useSlides() {
 	return context;
 }
 
-export function useSteps(n: number): number {
-	const s = useSlides();
-	useEffect(() => {
-		if (s) s.setSteps(n);
-	}, [n, s]);
-	return s?.currentStep ?? 0;
+const slideMoveDiff = makeMoveDiffControls(["ArrowUp"], ["ArrowDown"]);
+export function useSteps(steps: number): number {
+	const [currentStep, setCurrentStep] = useState(0);
+
+	useWindowEventListener("keydown", (e) => {
+		const newStep = slideMoveDiff(e.key) + currentStep;
+		if (newStep < 0 || newStep >= steps) return;
+		setCurrentStep(newStep);
+	});
+
+	return currentStep;
 }
