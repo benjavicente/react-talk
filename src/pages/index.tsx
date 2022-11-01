@@ -18,7 +18,7 @@ export default function Home() {
 				Taller de React
 			</h1>
 			<div className="flex gap-2">
-				<Link href="/slides" className="btn flex gap-1">
+				<Link href="/slides/01-introduction/" className="btn flex gap-1">
 					Ir a las diapositivas
 					<ArrowRightIcon className="w-5 h-5" />
 				</Link>

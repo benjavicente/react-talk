@@ -1,22 +1,11 @@
-import { useContext, useEffect, useState, createContext } from "react";
+import { useContext, useState, createContext } from "react";
 
 import { useRouter } from "next/router";
 
-import axios from "axios";
-
-import { useWindowEventListener } from "./events";
+import { useWindowEventListener } from "@/lib/events";
+import slides from "@/slides.json";
 
 const SlidesContext = createContext<SlideContextPayload | undefined>(undefined);
-
-function useSlidesNames() {
-	const [slides, setSlides] = useState<string[]>([]);
-	useEffect(() => {
-		axios.get("/api/slides").then((res) => {
-			setSlides(res.data);
-		});
-	}, []);
-	return slides;
-}
 
 function getSlideIndex(pathname: string, slidesNames: string[]) {
 	return slidesNames.findIndex((slideName) => pathname.includes(slideName));
@@ -30,7 +19,7 @@ function makeMoveDiffControls(back: KeyboardEvent["key"][], forward: KeyboardEve
 	};
 }
 
-export type SlideContextPayload = null | {
+export type SlideContextPayload = {
 	currentSlide: number;
 	slides: string[];
 	prev?: string;
@@ -41,7 +30,6 @@ const presentationMoveDiff = makeMoveDiffControls(["ArrowLeft"], ["ArrowRight"])
 
 function useSlideControls(slides: string[]) {
 	const router = useRouter();
-
 	const currentSlide = getSlideIndex(router.pathname, slides);
 	const prev = currentSlide > 0 ? slides[currentSlide - 1] : undefined;
 	const next = currentSlide < slides.length - 1 ? slides[currentSlide + 1] : undefined;
@@ -66,15 +54,13 @@ function useSlideControls(slides: string[]) {
 }
 
 export function SlidesProvider(props: PropsWithChildren) {
-	const slides = useSlidesNames();
 	const controls = useSlideControls(slides);
-	if (!slides) return <SlidesContext.Provider value={null} {...props} />;
 	return <SlidesContext.Provider value={{ slides, ...controls }} {...props} />;
 }
 
 export function useSlides() {
 	const context = useContext(SlidesContext);
-	if (context === undefined) throw new Error("useSlides must be used within a SlidesProvider");
+	if (!context) throw new Error("useSlides must be used within a SlidesProvider");
 	return context;
 }
 

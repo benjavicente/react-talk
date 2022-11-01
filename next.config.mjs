@@ -17,5 +17,4 @@ export default withMDX({
 	reactStrictMode: true,
 	swcMinify: true,
 	pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
-	experimental: { nftTracing: true },
 });
