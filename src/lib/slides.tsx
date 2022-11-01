@@ -3,6 +3,7 @@ import { useContext, useEffect, useState, createContext } from "react";
 import { useRouter } from "next/router";
 
 import axios from "axios";
+
 import { useWindowEventListener } from "./events";
 
 const SlidesContext = createContext<SlideContextPayload | undefined>(undefined);
