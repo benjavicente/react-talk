@@ -1,5 +1,5 @@
 import mdx from "@next/mdx";
-import withShiki from "@stefanprobst/rehype-shiki";
+import withShiki from "@leafac/rehype-shiki";
 import * as shiki from "shiki";
 
 const highlighter = await shiki.getHighlighter({ theme: "dark-plus" });

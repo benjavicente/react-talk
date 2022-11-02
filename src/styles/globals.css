@@ -8,29 +8,37 @@ html {
 }
 
 .highlighted {
-	@apply bg-opacity-10 bg-yellow-200 w-min;
+	@apply w-min bg-yellow-200 bg-opacity-10;
 }
 
-.slide {
-	@apply text-lg;
+.slide :not(pre) code {
+	@apply rounded bg-base-200 p-0.5 text-sm;
 }
 
-.slide code {
-	@apply text-sm flex flex-col;
+.slide pre > code {
+	@apply text-sm;
 }
 
 .slide pre {
-	@apply overflow-x-auto px-4 py-2 rounded text-sm leading-tight;
+	@apply -mx-2 my-4 overflow-x-auto rounded px-4 py-2 text-sm leading-tight;
 }
 
 .slide h1 {
-	@apply text-5xl font-bold underline decoration-primary underline-offset-4 decoration-wavy mb-4;
+	@apply mb-4 text-5xl font-bold underline decoration-primary decoration-wavy underline-offset-4;
 }
 
 .slide h2 {
-	@apply text-3xl font-bold mb-4;
+	@apply mb-4 text-3xl font-bold;
+}
+
+.slide h3 {
+	@apply mt-4 text-2xl font-bold text-base-content underline decoration-primary;
 }
 
 .slide ul {
-	@apply list-disc list-inside;
+	@apply mb-4 list-inside list-disc;
+}
+
+.slide p {
+	@apply mb-4 leading-snug;
 }

@@ -32,27 +32,27 @@ export function ThemeSwitcher() {
 	// Select the theme from the storage
 	return (
 		<Listbox value={currentTheme} onChange={setCurrentTheme}>
-			<div className="relative dropdown">
+			<div className="dropdown relative">
 				<Listbox.Button className="btn relative flex gap-1">
 					<span>{currentTheme}</span>
 					<ChevronUpDownIcon className="h-5 w-5" aria-hidden="true" />
 				</Listbox.Button>
-				<Listbox.Options className="absolute shadow bg-base-100 rounded-btn overflow-clip">
+				<Listbox.Options className="rounded-btn absolute overflow-clip bg-base-100 shadow">
 					{daisyui.themes.map((theme) => (
 						<Listbox.Option
 							key={theme}
 							value={theme}
 							className={({ active }) =>
 								classNames(
-									"relative select-none flex gap-2 py-2 px-4 bg-neutral text-neutral-content cursor-pointer",
+									"relative flex cursor-pointer select-none gap-2 bg-neutral py-2 px-4 text-neutral-content",
 									active ? "bg-neutral-focus" : ""
 								)
 							}
 						>
 							<div className="flex gap-0.5 bg-transparent" data-theme={theme}>
-								<span className="bg-primary w-1" />
-								<span className="bg-secondary w-1" />
-								<span className="bg-base-200 w-1" />
+								<span className="w-1 bg-primary" />
+								<span className="w-1 bg-secondary" />
+								<span className="w-1 bg-base-200" />
 							</div>
 							<div>{theme}</div>
 						</Listbox.Option>

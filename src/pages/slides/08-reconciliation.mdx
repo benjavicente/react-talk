@@ -1,0 +1,22 @@
+## Reconciliation
+
+Comparar árboles es `O(n^3)` (con `n` la cantidad de elementos).
+
+React utiliza un algoritmo de `O(n)` que asume 2 cosas:
+
+👉 2 **elementos de distinto tipo producen árboles diferentes**
+
+```tsx
+<div><Component /></div>
+<main><Component /></main>
+```
+
+👉 Un **elemento con `key` es estable**
+
+```tsx
+<ul>
+	<li key="a">A</li>
+	<li key="b">B</li>
+	<li key="c">C</li>
+</ul>
+```

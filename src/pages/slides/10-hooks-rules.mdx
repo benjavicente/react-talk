@@ -1,0 +1,20 @@
+## Reglas de los Hooks
+
+- No se pueden llamar dentro de ciclos, condiciones, o funciones anidadas
+- No se pueden llamar condicionalmente
+
+En resumen: **llamarlos siempre y en mismo orden**
+
+```tsx
+// 🔴 Incorrecto: podría no llamarse
+if (ok) {
+	useEffect(() => {
+		cargarDatos();
+	}, [ok]);
+}
+
+// ✅ OK
+useEffect(() => {
+	if (ok) cargarDatos();
+}, [ok]);
+```

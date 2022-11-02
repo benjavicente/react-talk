@@ -13,17 +13,20 @@ function SlideLayout({ children }: PropsWithChildren) {
 	const { prev, next, slides, currentSlide } = slidesStore;
 
 	return (
-		<div className="h-screen max-h-screen w-screen flex flex-col">
-			<div className="bg-base-300 text-base-content text-center">
-				<Link href="/">Taller de React</Link>
+		<div className="flex h-screen max-h-screen w-screen flex-col">
+			<div className="columns-2 bg-base-300 px-2 text-sm font-bold text-base-content">
+				<Link href="/" className="block text-left">
+					Taller de React
+				</Link>
+				<div className="text-right">{slides[currentSlide]}</div>
 			</div>
-			<main className="flex-grow p-12 slide overflow-auto">{children}</main>
-			<div className="grid grid-cols-3 bg-base-300 font-bold px-2 text-center">
-				<div className="w-full bg-red">{prev ? <Link href={`/slides/${prev}`}>{prev}</Link> : null}</div>
+			<main className="slide flex-grow overflow-auto px-8 pt-8 pb-2">{children}</main>
+			<div className="grid grid-cols-[3fr_1fr_3fr] bg-base-300 px-2 text-center text-sm font-bold">
+				<div className="bg-red w-full">{prev ? <Link href={`/slides/${prev}`}>{prev}</Link> : null}</div>
 				<div className="w-full">
 					{currentSlide + 1}/{slides.length}
 				</div>
-				<div className="w-full bg-red">{next ? <Link href={`/slides/${next}`}>{next}</Link> : null}</div>
+				<div className="bg-red w-full">{next ? <Link href={`/slides/${next}`}>{next}</Link> : null}</div>
 			</div>
 		</div>
 	);
@@ -40,7 +43,7 @@ function AppLayout({ children }: PropsWithChildren) {
 	}
 	return (
 		<div className="h-screen max-h-screen w-screen overflow-clip">
-			<main className="p-4 h-full overflow-clip">{children}</main>
+			<main className="h-full overflow-clip p-4">{children}</main>
 		</div>
 	);
 }
