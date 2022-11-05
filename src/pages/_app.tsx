@@ -1,6 +1,7 @@
 import "@/styles/globals.css";
 
 import { AppProps } from "next/app";
+import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
@@ -44,10 +45,37 @@ function AppLayout({ children }: PropsWithChildren) {
 	return <div className="h-min-fit h-screen w-screen">{children}</div>;
 }
 
+function Meta() {
+	const description = "Página con el material del taller de React organizado por Benjamín Vicente";
+	const title = "Taller de React";
+	return (
+		<Head>
+			<title>{title}</title>
+			<meta name="description" content={description} />
+			<link rel="icon" href="/icon.svg" />
+			<link rel="apple-touch-icon" href="/icon.svg" />
+			<meta name="theme-color" content="#ffffff" />
+			<meta name="viewport" content="width=device-width, initial-scale=1" />
+			<meta name="og:title" content={title} />
+			<meta name="og:description" content={description} />
+			<meta name="og:image" content="/square.png" />
+			<meta name="og:url" content="https://react.osuc.dev" />
+			<meta name="og:type" content="website" />
+			<meta name="twitter:card" content="summary_large_image" />
+			<meta name="twitter:site" content="@opensource_euc" />
+			<meta name="twitter:creator" content="@benjavicenteg" />
+			<meta name="twitter:title" content={title} />
+			<meta name="twitter:description" content={description} />
+			<meta name="twitter:image" content="/landscape.png" />
+		</Head>
+	);
+}
+
 export default function App({ Component, pageProps }: AppProps) {
 	return (
 		<ThemeProvider>
 			<AppLayout>
+				<Meta />
 				<Component {...pageProps} />
 			</AppLayout>
 		</ThemeProvider>
