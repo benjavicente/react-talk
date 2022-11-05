@@ -48,7 +48,7 @@ html {
 }
 
 .slide a {
-	@apply text-accent;
+	@apply text-secondary;
 }
 
 .slide a:hover {

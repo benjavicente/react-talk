@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect } from "react";
+import { createContext, useContext } from "react";
 
 import { Listbox } from "@headlessui/react";
 import { ChevronUpDownIcon } from "@heroicons/react/20/solid";
@@ -15,9 +15,7 @@ const ThemeContext = createContext<ThemeContextPayload | undefined>(undefined);
 export function ThemeProvider(props) {
 	const themeStorage = useLocalStorage("rbv-theme", "light");
 	const [theme] = themeStorage;
-	useEffect(() => {
-		document.documentElement.setAttribute("data-theme", theme);
-	}, [theme]);
+	if (typeof document !== "undefined") document.documentElement.setAttribute("data-theme", theme);
 	return <ThemeContext.Provider value={themeStorage} {...props} />;
 }
 
@@ -26,6 +24,7 @@ function useTheme() {
 	if (!context) throw new Error("useTheme must be used within a ThemeProvider");
 	return context;
 }
+const themeOptions = daisyui.themes.map((t) => (typeof t === "string" ? t : Object.keys(t)[0]));
 
 export function ThemeSwitcher() {
 	const [currentTheme, setCurrentTheme] = useTheme();
@@ -37,8 +36,8 @@ export function ThemeSwitcher() {
 					<span>{currentTheme}</span>
 					<ChevronUpDownIcon className="h-5 w-5" aria-hidden="true" />
 				</Listbox.Button>
-				<Listbox.Options className="rounded-btn absolute overflow-clip bg-base-100 shadow">
-					{daisyui.themes.map((theme) => (
+				<Listbox.Options className="rounded-btn absolute overflow-auto bg-base-100 shadow">
+					{themeOptions.map((theme) => (
 						<Listbox.Option
 							key={theme}
 							value={theme}
