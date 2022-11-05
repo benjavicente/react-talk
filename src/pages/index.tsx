@@ -25,7 +25,7 @@ export default function Home() {
 					</Link>
 					<ThemeSwitcher />
 				</div>
-				<ReactLogo className="absolute bottom-5 right-2 -z-10 h-96 animate-[spin_8s_linear_infinite] fill-primary stroke-primary" />
+				<ReactLogo className="absolute bottom-5 right-2 -z-10 h-96 animate-[spin_8s_linear_infinite] fill-primary stroke-primary opacity-30" />
 			</main>
 		</>
 	);

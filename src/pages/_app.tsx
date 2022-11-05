@@ -13,7 +13,7 @@ function SlideLayout({ children }: PropsWithChildren) {
 	const { prev, next, slides, currentSlide } = slidesStore;
 
 	return (
-		<div className="flex h-[100vh] h-[100svw] max-h-screen w-screen flex-col">
+		<div className="flex h-[100vh] h-[100svw] w-screen flex-col">
 			<div className="columns-2 bg-base-300 px-2 text-sm font-bold text-base-content">
 				<Link href="/" className="block text-left">
 					Taller de React

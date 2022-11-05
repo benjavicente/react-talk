@@ -1,5 +1,24 @@
 ## Patrones de diseño en React
 
-Problema: Patrones de diseño comunes están basados en clasess.
+Problema: Patrones de diseño comunes están **basados en clases**.
 
-React es funcional: se aprovecha de la composición de funciones.
+React es **funcional**: se aprovecha de la composición de funciones.
+
+```js
+A(x) = f(g(h(x.a)), j(x.b));
+```
+
+```tsx
+function A(x) {
+	return (
+		<f>
+			<g>
+				<h a={x.a} />
+			</g>
+			<j b={x.b} />
+		</f>
+	);
+}
+```
+
+La composición no es aplicada solo en componentes retornados 👀

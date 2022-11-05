@@ -1,0 +1,12 @@
+## Especialización
+
+Muchas veces se necesita especializar diferentes componentes,
+añadiendo estilos o estado en específico.
+
+```tsx
+const Button = ({ children, ...props }) => (
+	<button className="btn" type="button" {...props}>
+		{children}
+	</button>
+);
+```

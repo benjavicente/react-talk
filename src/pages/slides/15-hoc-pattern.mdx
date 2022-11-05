@@ -1,0 +1,25 @@
+## Higher-order component
+
+Es una función que toma un componente y devuelve un nuevo componente.
+
+Utilizada para preparar o proveer datos a el árbol de componentes.
+
+```tsx
+import * as axios from "axios";
+
+const withAuthToken = (WrappedComponent) => {
+	return (props) => {
+		const token = localStorage.getItem("token");
+		if (token) {
+			axios.defaults.headers.common[
+				"Authorization"
+			] = `Bearer ${token}`;
+		}
+		return <WrappedComponent {...props} user={user} />;
+	};
+};
+
+export const App = withAuthToken((props) => {
+	return <h1>App</h1>;
+});
+```

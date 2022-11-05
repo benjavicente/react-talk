@@ -1,0 +1,32 @@
+## Patrón MVC aplicado a React
+
+Usualmente frameworks (como Rails) siguen un patrón MVC para extructurar
+el código de las aplicaciones. Pero en React no se tiene una distincción
+tan clara entre las capas de la aplicación.
+
+De todas formas, se puede ver una similitud con como
+definen los componentes funcionales de React:
+
+- **Árbol retornado (vista)**: Representa lo que se muestra al usuario.
+- **Hooks (modelos)**: Modelan el estado de los componentes.
+- **Componentes (controladores)**: Son los unir el estado con la vista.
+
+```tsx
+export function Controller() {
+	const user = useUserData();
+	const reservations = useReservations(user.id);
+
+	return (
+		<View>
+			<h1>Reservations for {user.name}</h1>
+			<ul>
+				{reservations.map((reservation) => (
+					<li key={reservation.id}>
+						{reservation.date} - {reservation.time}
+					</li>
+				))}
+			</ul>
+		</View>
+	);
+}
+```

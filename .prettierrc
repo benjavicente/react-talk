@@ -1,16 +1,16 @@
 {
-    "printWidth": 120,
-    "endOfLine": "lf",
-    "useTabs": true,
-    "plugins": [
-        "prettier-plugin-tailwindcss"
-    ],
-    "overrides": [
-        {
-            "files": "*.mdx",
-            "options": {
-                "printWidth": 60
-            }
-        }
-    ]
+	"printWidth": 120,
+	"endOfLine": "lf",
+	"useTabs": true,
+	"plugins": ["prettier-plugin-tailwindcss"],
+	"overrides": [
+		{
+			"files": "*.mdx",
+			"options": { "printWidth": 60 }
+		},
+		{
+			"files": "./src/examples/**/*.tsx",
+			"options": { "printWidth": 80 }
+		}
+	]
 }

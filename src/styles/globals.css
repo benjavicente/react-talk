@@ -4,6 +4,11 @@
 
 html {
 	tab-size: 2;
+	accent-color: theme("colors.primary");
+}
+
+.example {
+	@apply rounded-lg border-4 border-dotted border-warning p-4;
 }
 
 .highlighted {
@@ -19,7 +24,7 @@ html {
 }
 
 .slide pre {
-	@apply -mx-2 my-4 overflow-x-auto rounded px-4 py-2 text-sm leading-tight;
+	@apply mx-2 my-4 max-h-96 overflow-x-auto overflow-y-auto rounded px-6 py-4 text-sm leading-tight;
 }
 
 .slide h1 {
@@ -40,4 +45,16 @@ html {
 
 .slide p {
 	@apply mb-4 leading-snug;
+}
+
+.slide a {
+	@apply text-accent;
+}
+
+.slide a:hover {
+	@apply underline;
+}
+
+.slide iframe {
+	@apply h-80 w-full;
 }

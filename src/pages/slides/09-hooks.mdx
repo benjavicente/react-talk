@@ -5,8 +5,10 @@ manejar estado y ciclo de vida de componentes.
 Son una añadición reciente a React, utilizados
 en conjunto a los componentes funcionales.
 
-Los principales son `useState` (estado) y
-`useEffect` (efectos dado cambios) y `useContext` (estado del árbol).
+Los principales son `useState` y `useEffect` y `useContext`.
+[La API de hooks tiene la lista completa][hooks-api].
+
+[hooks-api]: https://reactjs.org/docs/hooks-reference.html
 
 ```tsx
 function App() {
@@ -21,3 +23,5 @@ function App() {
 	);
 }
 ```
+
+Ojo que no todos los hooks realizan re-renders 👀
