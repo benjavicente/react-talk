@@ -10,7 +10,7 @@ type TD = Record<string, any>;
 
 export function Table<T extends TD>({ data, cols, dataKey }: TableProps<T>) {
 	return (
-		<table className="table">
+		<table className="table [zoom:0.8] sm:[zoom:1]">
 			<thead>
 				<tr>
 					{cols.map(([header]) => (

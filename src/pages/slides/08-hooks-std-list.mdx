@@ -73,7 +73,7 @@ export function HooksList() {
 					<Fragment key={i}>{hook}</Fragment>
 				))}
 			</dl>
-			{step === hooks.length && (
+			{step >= hooks.length && (
 				<p>
 					Hay más hooks, estos podrían considerarse los más importantes.
 				</p>

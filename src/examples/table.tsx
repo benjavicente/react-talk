@@ -7,7 +7,7 @@ type Obj = Record<string, any>;
 
 export function Table<T extends Obj>({ data, cols }: TableProps<T>) {
 	return (
-		<table className="table">
+		<table className="table [zoom:0.8] sm:[zoom:1]">
 			<thead>
 				<tr>
 					{cols.map(([header]) => (

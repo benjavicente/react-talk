@@ -54,7 +54,7 @@ export function App() {
 		<Selection options={options}>
 			<div>
 				<h4 className="font-bold">Selecciona tus tecnologías favoritas</h4>
-				<ul className="flex gap-2">
+				<ul className="flex flex-wrap gap-2">
 					<Selection.List>
 						{({ option, inputProps, id }) => (
 							<li className="flex max-w-fit list-none gap-4 rounded bg-base-200 px-2 py-1">

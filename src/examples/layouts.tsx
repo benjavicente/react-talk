@@ -40,7 +40,7 @@ export function App() {
 	//* en común, dejando a Index con un layout por defecto?
 	// ¿Puedes encontrar el problema que hay en la implementación actual?
 	return (
-		<div className="flex h-20 gap-3">
+		<div className="flex flex-col sm:flex-row">
 			<div className="flex items-center gap-4">
 				{Object.keys(pages).map((path) => (
 					<button
@@ -52,7 +52,7 @@ export function App() {
 					</button>
 				))}
 			</div>
-			<div className="divider divider-horizontal" />
+			<div className="divider divider-vertical sm:divider-horizontal" />
 			<Page />
 		</div>
 	);

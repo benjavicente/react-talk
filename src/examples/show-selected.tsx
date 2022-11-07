@@ -11,7 +11,7 @@ export function App() {
 		<>
 			<div>
 				<h4 className="font-bold">Selecciona tus tecnologías favoritas</h4>
-				<ul className="flex gap-2">
+				<ul className="flex flex-wrap gap-2">
 					{options.map((option) => (
 						<li
 							key={option}

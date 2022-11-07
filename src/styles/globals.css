@@ -9,7 +9,7 @@ html {
 }
 
 .example {
-	@apply rounded-lg border-4 border-dotted border-warning p-4;
+	@apply overflow-clip rounded-lg border-4 border-dotted border-warning p-4;
 }
 
 .highlighted {
