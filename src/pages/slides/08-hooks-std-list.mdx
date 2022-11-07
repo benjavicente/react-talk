@@ -6,10 +6,10 @@ import { useSteps } from "@/lib/slides";
 export const hooks = [
 	<>
 		<dt>
-			<code>const [state, setState] = useEffect(initialState)</code>
+			<code>const [state, setState] = useState(initialState)</code>
 		</dt>
 		<dd>
-			Estado, que provee una función para actualizarlo y re-renderizar.
+			Estado, que provee una función para actualizarlo y re-renderizar,
 		</dd>
 	</>,
 	<>
@@ -19,7 +19,7 @@ export const hooks = [
 		<dd>
 			Función que se ejecuta cuando el componente se renderiza o cuando una
 			de sus dependencias cambia. El callback puede devolver una función
-			que se ejecutará cuando el componente se desmonte.
+			que se ejecutará cuando el componente se desmonte,
 		</dd>
 	</>,
 	<>
@@ -35,7 +35,7 @@ export const hooks = [
 		<dd>
 			Similar a <code>useState</code>, pero la responsabilidad de
 			actualizar el estado pasa de los callbacks que utilizan{" "}
-			<code>setState</code> a una función <code>reducer</code>.
+			<code>setState</code> a una función <code>reducer</code>,
 		</dd>
 	</>,
 	<>
@@ -46,9 +46,9 @@ export const hooks = [
 			<code>useMemo(callback, [dependencies])</code>
 		</dt>
 		<dd>
-			Usan memorización, donde <code>useCallback</code> devuelve la función
+			Usan memoización, donde <code>useCallback</code> devuelve la función
 			y <code>useMemo</code>
-			devuelve un valor.
+			devuelve un valor,
 		</dd>
 	</>,
 	<>
