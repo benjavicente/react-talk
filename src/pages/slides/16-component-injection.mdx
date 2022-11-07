@@ -1,27 +1,27 @@
-## Composición de componentes
+## Composición
 
-Normalmente se hace de esta forma:
+Podemos obtener componentes de props, imports y variables:
 
 ```tsx
-function App() {
+function Panel({ Icon, children, elements }) {
 	return (
-		<div>
-			<Header />
-			<Content />
-		</div>
+		<Layout>
+			<Icon />
+			{children}
+			{elements.map(({ Element }) => (
+				<Element />
+			))}
+		</Layout>
 	);
 }
 ```
 
-Pero también se puede obtener componentes en props:
+También podemos componente componentes 🤯
 
 ```tsx
-function Panel({ Icon, children }) {
-	return (
-		<div>
-			<Icon />
-			{children}
-		</div>
-	);
+function useSqrt() {
+	const [title, setTitle] = useState("title");
+	useEffect(() => (document.title = title), [title]);
+	return [title, setTitle];
 }
 ```

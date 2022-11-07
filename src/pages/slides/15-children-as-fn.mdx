@@ -4,14 +4,7 @@ Existen casos donde el padre necesita pasar datos hacia abajo,
 pero un contexto es muy complejo para el caso.
 
 ```tsx
-function Field({ name, initialValue, children }) {
-	const [value, setValue] = useState(initialValue);
-	const fieldProps = useField(name, value, setValue);
-
-	return children(fieldProps);
-}
-
-const App = () => {
+function App() {
 	return (
 		<Form>
 			<Field name="name" initialValue="John">
@@ -24,5 +17,11 @@ const App = () => {
 			</Field>
 		</Form>
 	);
-};
+}
+
+function Field({ name, initialValue, children }) {
+	const [value, setValue] = useState(initialValue);
+	const fieldProps = useField(name, value, setValue);
+	return children(fieldProps);
+}
 ```
