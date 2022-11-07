@@ -1,0 +1,28 @@
+## `children` como función
+
+Existen casos donde el padre necesita pasar datos hacia abajo,
+pero un contexto es muy complejo para el caso.
+
+```tsx
+function Field({ name, initialValue, children }) {
+	const [value, setValue] = useState(initialValue);
+	const fieldProps = useField(name, value, setValue);
+
+	return children(fieldProps);
+}
+
+const App = () => {
+	return (
+		<Form>
+			<Field name="name" initialValue="John">
+				{({ active, ...props }) => (
+					<input
+						{...props}
+						className={active ? "outline-primary" : "outline-transparent"}
+					/>
+				)}
+			</Field>
+		</Form>
+	);
+};
+```

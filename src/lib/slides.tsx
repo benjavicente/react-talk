@@ -71,6 +71,7 @@ export function useSteps(steps: number): number {
 	useWindowEventListener("keydown", (e) => {
 		const newStep = slideMoveDiff(e.key) + currentStep;
 		if (newStep < 0 || newStep >= steps) return;
+		console.log(newStep, steps);
 		setCurrentStep(newStep);
 	});
 

@@ -3,8 +3,13 @@ import { useEffect, useState } from "react";
 const url = "https://api.github.com/repos/benjavicente/react-talk/stargazers";
 
 export function Component() {
-	// El useState y useEffect son usados de la misma manera en varios componentes
-	// ¿Como se podría reutilizar la lógica?
+	//* El useState y useEffect son usados de la misma manera en varios componentes
+	//* ¿Como se podría reutilizar la lógica?
+
+	// Pasa que ocasionalmente se arroja el warning:
+	// Can't perform a React state update on an unmounted component
+	// ¿Como se podría evitar?
+
 	const [data, setData] = useState<{ login: string }[] | null>(null);
 	useEffect(() => {
 		const headers = { "Content-Type": "application/json" };

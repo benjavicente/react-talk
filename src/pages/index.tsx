@@ -14,7 +14,7 @@ export default function Home() {
 				</h1>
 				<div className="flex flex-wrap gap-2">
 					<ThemeSwitcher />
-					<Link href="/slides/01-intro/" className="btn flex gap-1">
+					<Link href="/slides/00-intro/" className="btn flex gap-1">
 						Ir a las diapositivas
 						<ArrowRightIcon className="h-5 w-5" />
 					</Link>

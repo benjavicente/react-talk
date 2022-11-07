@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 export function Component() {
 	const [validatedData, setValidatedData] = useState("");
 
-	// ¿Como podemos extraer esto a un hook?
+	//* ¿Como podemos extraer esto a un hook?
 	const ref = useRef<HTMLInputElement>(null);
 	useEffect(() => {
 		const el = ref.current;

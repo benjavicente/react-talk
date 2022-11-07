@@ -1,0 +1,27 @@
+## Composición de componentes
+
+Normalmente se hace de esta forma:
+
+```tsx
+function App() {
+	return (
+		<div>
+			<Header />
+			<Content />
+		</div>
+	);
+}
+```
+
+Pero también se puede obtener componentes en props:
+
+```tsx
+function Panel({ Icon, children }) {
+	return (
+		<div>
+			<Icon />
+			{children}
+		</div>
+	);
+}
+```

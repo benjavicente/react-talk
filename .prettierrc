@@ -6,7 +6,7 @@
 	"overrides": [
 		{
 			"files": "*.mdx",
-			"options": { "printWidth": 60 }
+			"options": { "printWidth": 75 }
 		},
 		{
 			"files": "./src/examples/**/*.tsx",

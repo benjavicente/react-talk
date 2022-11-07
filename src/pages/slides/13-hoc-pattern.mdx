@@ -1,6 +1,6 @@
-## Higher-order component
+## Higher-order component (decorador)
 
-Es una función que toma un componente y devuelve un nuevo componente.
+Es una función `A` que toma un componente `f` y devuelve un nuevo componente `g(x) = A(f(x))`.
 
 Utilizada para preparar o proveer datos a el árbol de componentes.
 
@@ -11,11 +11,9 @@ const withAuthToken = (WrappedComponent) => {
 	return (props) => {
 		const token = localStorage.getItem("token");
 		if (token) {
-			axios.defaults.headers.common[
-				"Authorization"
-			] = `Bearer ${token}`;
+			axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 		}
-		return <WrappedComponent {...props} user={user} />;
+		return <WrappedComponent {...props} />;
 	};
 };
 

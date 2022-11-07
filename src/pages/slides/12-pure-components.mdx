@@ -1,0 +1,23 @@
+## Componentes puros
+
+Un componente puro es aquel que no maneja estado (no usa hooks).
+
+```tsx
+function Card({ img, title, Content }) {
+	return (
+		<div className="card">
+			<img src={img} alt={title} />
+			<h2>{title}</h2>
+			<Content />
+		</div>
+	);
+}
+```
+
+Es importante que se diferencie entre componentes puros
+y componentes que manejan estado, para la reutilizabilidad
+y mantenibilidad del código.
+
+Los componentes puros usualmente son componentes atómicos que
+se encargan solo de presentar los props, como los botones,
+navbars, cards, etc.

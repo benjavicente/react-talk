@@ -1,0 +1,85 @@
+import { Fragment } from "react";
+import { useSteps } from "@/lib/slides";
+
+## Lista de Hooks
+
+export const hooks = [
+	<>
+		<dt>
+			<code>const [state, setState] = useEffect(initialState)</code>
+		</dt>
+		<dd>
+			Estado, que provee una función para actualizarlo y re-renderizar.
+		</dd>
+	</>,
+	<>
+		<dt>
+			<code>useEffect(callback, [dependencies])</code>
+		</dt>
+		<dd>
+			Función que se ejecuta cuando el componente se renderiza o cuando una
+			de sus dependencias cambia. El callback puede devolver una función
+			que se ejecutará cuando el componente se desmonte.
+		</dd>
+	</>,
+	<>
+		<dt>
+			<code>useContext(context)</code>
+		</dt>
+		<dd>Devuelve el valor actual del contexto.</dd>
+	</>,
+	<>
+		<dt>
+			<code>useReducer(reducer, initialState, init)</code>
+		</dt>
+		<dd>
+			Similar a <code>useState</code>, pero la responsabilidad de
+			actualizar el estado pasa de los callbacks que utilizan{" "}
+			<code>setState</code> a una función <code>reducer</code>.
+		</dd>
+	</>,
+	<>
+		<dt>
+			<code>useCallback(callback, [dependencies])</code>
+		</dt>
+		<dt>
+			<code>useMemo(callback, [dependencies])</code>
+		</dt>
+		<dd>
+			Usan memorización, donde <code>useCallback</code> devuelve la función
+			y <code>useMemo</code>
+			devuelve un valor.
+		</dd>
+	</>,
+	<>
+		<dt>
+			<code>useRef(initialValue)</code>
+		</dt>
+		<dd>
+			Devuelve un objeto mutable con una propiedad <code>current</code> que
+			se puede utilizar para almacenar cualquier valor mutable. No causa
+			re-render.
+		</dd>
+	</>,
+];
+
+export function HooksList() {
+	const step = useSteps(hooks.length + 1);
+	return (
+		<Fragment>
+			{step === 0 && "Usa la flacha hacia abajo ⬇️"}
+			<dl>
+				{hooks.slice(0, step).map((hook, i) => (
+					<Fragment key={i}>{hook}</Fragment>
+				))}
+			</dl>
+			{step === hooks.length && (
+				<p>
+					Hay más hooks, estos podrían considerarse los más importantes.
+				</p>
+			)}
+		</Fragment>
+	);
+}
+
+<HooksList />

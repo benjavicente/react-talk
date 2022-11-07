@@ -1,0 +1,24 @@
+## Tablas
+
+import { Table } from "@/examples/table.tsx";
+
+```tsx file=<rootDir>/table.tsx
+
+```
+
+export const data = [
+	{ name: "Cheese", price: 1000, id: 1 },
+	{ name: "Bread", price: 2000, id: 2 },
+	{ name: "Milk", price: 3000, id: 3 },
+];
+
+<div className="example">
+	<Table
+		data={data}
+		cols={[
+			["Producto", "name"],
+			["Precio", "price"],
+			["Link al producto", "id"],
+		]}
+	/>
+</div>

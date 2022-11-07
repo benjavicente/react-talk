@@ -16,9 +16,10 @@ function DependentCounter({ count, setCount }: DependentCounterProps) {
 }
 
 export default function App() {
+	//* ¿Cómo podemos evitar que toda la App se renderice?
 	const [count, setCount] = useState(0);
 	return (
-		<div className="p-4">
+		<div className="px-4">
 			<div>Renderizado a las {currentTime()}</div>
 			<div className="flex gap-4">
 				<DependentCounter count={count} setCount={setCount} />

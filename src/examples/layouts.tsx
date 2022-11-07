@@ -6,7 +6,7 @@ function Index() {
 
 function Login() {
 	return (
-		<div className="my-auto max-w-sm rounded bg-base-200 p-4 text-center">
+		<div className="my-auto mx-auto max-w-sm rounded bg-base-200 p-4 text-center">
 			In Login
 		</div>
 	);
@@ -14,7 +14,7 @@ function Login() {
 
 function Register() {
 	return (
-		<div className="my-auto max-w-sm rounded bg-base-200 p-4 text-center">
+		<div className="my-auto mx-auto max-w-sm rounded bg-base-200 p-4 text-center">
 			In Register
 		</div>
 	);
@@ -35,9 +35,13 @@ type PagePath = keyof typeof pages;
 export function App() {
 	const [route, setRoute] = useState<PagePath>("/");
 	const Page = pages[route]; // Importante! Prueba ver que pasa si lo dejas en minúscula
+
+	//* ¿Como se puede hacer que Login y Register tengan un layout
+	//* en común, dejando a Index con un layout por defecto?
+	// ¿Puedes encontrar el problema que hay en la implementación actual?
 	return (
-		<>
-			<div className="flex gap-4">
+		<div className="flex h-20 gap-3">
+			<div className="flex items-center gap-4">
 				{Object.keys(pages).map((path) => (
 					<button
 						className="btn"
@@ -48,12 +52,8 @@ export function App() {
 					</button>
 				))}
 			</div>
-			{/* ¿Como se puede hacer que Login y Register tengan un layout */}
-			{/* en común, dejando a Index con un layout por defecto? */}
-			{/* ¿Puedes encontrar el problema que hay en la implementación actual? */}
-			<div className="p-4">
-				<Page />
-			</div>
-		</>
+			<div className="divider divider-horizontal" />
+			<Page />
+		</div>
 	);
 }
