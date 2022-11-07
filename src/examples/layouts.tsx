@@ -34,10 +34,10 @@ type PagePath = keyof typeof pages;
 
 export function App() {
 	const [route, setRoute] = useState<PagePath>("/");
-	const Page = pages[route]; // Importante! Prueba ver que pasa si lo dejas en minúscula
+	const Page = pages[route]; // Prueba ver que pasa si dejas `Page` en minúscula
 
-	//* ¿Como se puede hacer que Login y Register tengan un layout
-	//* en común, dejando a Index con un layout por defecto?
+	//* ¿Como se puede hacer que el componente Login y Register tengan
+	//* un layout en común, dejando a Index con un layout por defecto?
 	// ¿Puedes encontrar el problema que hay en la implementación actual?
 	return (
 		<div className="flex flex-col sm:flex-row">
