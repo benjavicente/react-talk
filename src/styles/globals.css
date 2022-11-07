@@ -9,7 +9,11 @@ html {
 }
 
 .example {
-	@apply overflow-clip rounded-lg border-4 border-dotted border-warning p-4;
+	@apply flex flex-grow flex-col items-stretch overflow-auto rounded-lg border-4 border-dotted border-warning bg-warning bg-opacity-10 px-4 py-1;
+}
+
+.slide pre:has(+ .example) {
+	@apply max-h-64;
 }
 
 .highlighted {
@@ -25,7 +29,15 @@ html {
 }
 
 .slide pre {
-	@apply mx-2 my-4 max-h-80 overflow-x-auto overflow-y-auto rounded px-6 py-4 leading-tight;
+	@apply -mx-1 mb-2 max-h-80 flex-shrink-0 overflow-x-auto overflow-y-auto rounded px-4 py-3 leading-tight;
+}
+
+.slide pre:has(+ pre) {
+	@apply mb-1;
+}
+
+.slide pre:last-child {
+	@apply mb-0 max-h-fit;
 }
 
 .slide h1 {
@@ -33,19 +45,19 @@ html {
 }
 
 .slide h2 {
-	@apply mb-4 text-3xl font-bold;
+	@apply mb-2 text-3xl font-bold;
 }
 
 .slide h3 {
-	@apply mt-4 text-2xl font-bold text-base-content underline decoration-primary;
+	@apply mt-2 text-2xl font-bold text-base-content underline decoration-primary;
 }
 
 .slide ul {
-	@apply mb-4 list-inside list-disc;
+	@apply mb-2 list-inside list-disc;
 }
 
-.slide p {
-	@apply mb-4 leading-snug;
+.slide > p {
+	@apply mb-2 leading-snug;
 }
 
 .slide a {
@@ -70,4 +82,12 @@ html {
 
 .slide dd > p {
 	@apply m-0;
+}
+
+.slide {
+	@apply flex w-full flex-col;
+}
+
+.slide .img {
+	@apply rounded-lg;
 }

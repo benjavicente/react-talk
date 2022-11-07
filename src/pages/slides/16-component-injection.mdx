@@ -19,8 +19,8 @@ function Panel({ Icon, children, elements }) {
 También podemos usar composición en componentes 🤯
 
 ```tsx
-function useSqrt() {
-	const [title, setTitle] = useState("title");
+function useDocumentTitle(defaultTitle) {
+	const [title, setTitle] = useState(defaultTitle);
 	useEffect(() => (document.title = title), [title]);
 	return [title, setTitle];
 }

@@ -15,7 +15,6 @@ definen los componentes funcionales de React:
 export function Controller() {
 	const user = useUserData();
 	const reservations = useReservations(user.id);
-
 	return (
 		<View>
 			<h1>Reservations for {user.name}</h1>

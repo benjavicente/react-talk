@@ -21,15 +21,15 @@ function SlideLayout({ children }: PropsWithChildren) {
 				</Link>
 				<div className="text-right">{slides[currentSlide]}</div>
 			</div>
-			<main className="slide flex-grow overflow-auto px-8 pt-8 pb-2">{children}</main>
-			<div className="grid h-16 grid-cols-[3fr_1fr_3fr] bg-base-300 px-2 text-center font-bold text-base-content lg:h-fit ">
-				<div className="bg-red flex w-full items-center justify-center  active:bg-base-200">
+			<main className="slide flex-grow overflow-auto px-8 pt-4 pb-2 lg:pt-8">{children}</main>
+			<div className="grid h-14 flex-shrink-0 flex-grow-0 grid-cols-[3fr_1fr_3fr] bg-base-300 px-2 text-center font-bold text-base-content md:h-fit ">
+				<div className="bg-red flex w-full items-center justify-center active:bg-base-200">
 					{prev ? <Link href={`/slides/${prev}`}>{prev}</Link> : null}
 				</div>
 				<Link href="/slides/" className="flex w-full items-center justify-center">
 					{currentSlide + 1}/{slides.length}
 				</Link>
-				<div className="bg-red flex w-full items-center justify-center active:bg-base-200">
+				<div className="flex w-full items-center justify-center active:bg-base-200">
 					{next ? <Link href={`/slides/${next}`}>{next}</Link> : null}
 				</div>
 			</div>

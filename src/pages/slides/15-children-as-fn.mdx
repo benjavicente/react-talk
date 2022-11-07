@@ -9,10 +9,7 @@ function App() {
 		<Form>
 			<Field name="name" initialValue="John">
 				{({ active, ...props }) => (
-					<input
-						{...props}
-						className={active ? "outline-primary" : "outline-transparent"}
-					/>
+					<input {...props} className={active ? "active" : ""} />
 				)}
 			</Field>
 		</Form>
