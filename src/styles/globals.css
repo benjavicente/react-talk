@@ -9,11 +9,11 @@ html {
 }
 
 .example {
-	@apply flex flex-grow flex-col items-stretch overflow-auto rounded-lg border-4 border-dotted border-warning bg-warning bg-opacity-10 px-4 py-1;
+	@apply flex flex-grow flex-col items-stretch  rounded-lg border-4 border-dotted border-warning bg-warning bg-opacity-10 px-4 py-1;
 }
 
 .slide pre:has(+ .example) {
-	@apply max-h-64;
+	@apply max-h-96;
 }
 
 .highlighted {
@@ -68,8 +68,14 @@ html {
 	@apply underline;
 }
 
+.slide .mockup-window {
+	@apply min-h-[15em] flex-grow overflow-clip;
+}
+
 .slide iframe {
-	@apply h-80 w-full;
+	@apply h-[125%] w-[125%];
+	transform: scale(0.8);
+	transform-origin: 0 0;
 }
 
 .slide dl > dt {
